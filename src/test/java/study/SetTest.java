@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -29,7 +30,7 @@ public class SetTest {
     @Test
     @DisplayName("요구사항 1 : Set의 사이즈 구하기")
     public void test1() {
-        assertThat(numbers.size() == 3).isTrue();
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
     @DisplayName("요구사항 2 : 1, 2, 3의 값이 존재하는지를 확인하기")
@@ -43,10 +44,9 @@ public class SetTest {
     @ParameterizedTest
     @CsvSource(value = {"true:1,2,3", "false:4,5"}, delimiter = ':')
     public void test3(boolean result, String input) {
-        if (result) {
-            assertThat(input.split(",")).containsExactly("1", "2", "3");
-        } else {
-            assertThat(input.split(",")).containsExactly("4", "5");
+        for (int i = 0; i < input.split(",").length; i++) {
+            int a = Integer.parseInt(input.split(",")[i]);
+            assertEquals(result, numbers.contains(a));
         }
     }
 

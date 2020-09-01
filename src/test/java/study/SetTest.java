@@ -29,24 +29,23 @@ public class SetTest {
     @Test
     @DisplayName("요구사항 1 : Set의 사이즈 구하기")
     public void test1() {
-        System.out.println(String.format("Size of Set : %d", numbers.size()));
+        assertThat(numbers.size() == 3).isTrue();
     }
 
     @DisplayName("요구사항 2 : 1, 2, 3의 값이 존재하는지를 확인하기")
     @ParameterizedTest
     @ValueSource(ints={1,2,3})
     public void test2(int input) {
-        System.out.println(input);
         assertThat(numbers.contains(input)).isTrue();
     }
 
     @DisplayName("요구사항 3 : 1, 2, 3 값은 contains 메소드 실행결과 true, 4, 5 값을 넣으면 false 가 반환되는 테스트")
     @ParameterizedTest
     @CsvSource(value = {"true:1,2,3", "false:4,5"}, delimiter = ':')
-    public void test3(String result, String input) {
-        if ("true".equals(result)) {
+    public void test3(boolean result, String input) {
+        if (result) {
             assertThat(input.split(",")).containsExactly("1", "2", "3");
-        } else if ("false".equals(result)) {
+        } else {
             assertThat(input.split(",")).containsExactly("4", "5");
         }
     }

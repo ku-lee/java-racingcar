@@ -45,8 +45,7 @@ public class SetTest {
     @CsvSource(value = {"true:1,2,3", "false:4,5"}, delimiter = ':')
     public void test3(boolean result, String input) {
         for (int i = 0; i < input.split(",").length; i++) {
-            int a = Integer.parseInt(input.split(",")[i]);
-            assertEquals(result, numbers.contains(a));
+            assertEquals(result, numbers.contains(Integer.parseInt(input.split(",")[i])));
         }
     }
 

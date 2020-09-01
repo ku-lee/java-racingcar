@@ -30,7 +30,7 @@ public class SetTest {
     @Test
     @DisplayName("요구사항 1 : Set의 사이즈 구하기")
     public void test1() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("요구사항 2 : 1, 2, 3의 값이 존재하는지를 확인하기")

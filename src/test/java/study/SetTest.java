@@ -26,7 +26,6 @@ public class SetTest {
     }
 
     // Test Case 구현
-
     @Test
     @DisplayName("요구사항 1 : Set의 사이즈 구하기")
     public void test1() {
@@ -44,8 +43,9 @@ public class SetTest {
     @ParameterizedTest
     @CsvSource(value = {"true:1,2,3", "false:4,5"}, delimiter = ':')
     public void test3(boolean result, String input) {
-        for (int i = 0; i < input.split(",").length; i++) {
-            assertEquals(result, numbers.contains(Integer.parseInt(input.split(",")[i])));
+        String[] arr = input.split(",");
+        for (String str : arr) {
+            assertEquals(result, numbers.contains(Integer.parseInt(str)));
         }
     }
 
